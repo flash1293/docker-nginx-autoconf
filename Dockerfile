@@ -1,4 +1,8 @@
 FROM dockerfile/nginx
 
-RUN apt-get install -y incron
-RUN echo '/etc/nginx/sites-enabled IN_MODIFY /etc/init.d/nginx reload'
+RUN apt-get update
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install inotify-tools
+
+ADD ./watch.sh /watch.sh
+
+CMD /watch.sh
