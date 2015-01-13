@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Starting nginx"
-service nginx start
+service nginx start &
 LASTCHANGE=$(stat -c %Y /etc/nginx/sites-enabled/default | sed 's/^\([0-9\-]*\).*/\1/')
 echo "Watching for config-changes"
 while true
